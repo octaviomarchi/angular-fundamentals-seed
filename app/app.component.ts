@@ -12,11 +12,12 @@ interface Passenger {
   template: `
     <div class="app">
       <h3>Airline Passengers</h3>
+      <h3>Airline Passengers</h3>
       <ul>
         <li *ngFor="let passenger of passengers; let i = index;">
           <span
             class="status"
-            [class.checked-in]="passenger.checkedIn"></span>
+            [style.backgroundColor]="(passenger.checkedIn ? '#2ecc71' : '#c0392b')"></span>
           {{ i }}: {{ passenger.fullname }}
         </li>
       </ul>
@@ -25,9 +26,8 @@ interface Passenger {
         <li *ngFor="let passenger of passengers; let i = index;">
           <span
             class="status"
-            [ngClass]="{
-              'checked-in': passenger.checkedIn,
-              'checked-out': !passenger.checkedIn
+            [ngStyle]="{
+              backgroundColor: (passenger.checkedIn ? '#2ecc71' : '#c0392b')
             }"></span>
           {{ i }}: {{ passenger.fullname }}
         </li>
